@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Button,
   FlatList,
@@ -11,7 +11,7 @@ import {
   Text,
   TextInput,
   View,
-} from "react-native";
+} from 'react-native';
 
 interface TodoItem {
   text: string;
@@ -21,22 +21,23 @@ interface TodoItem {
 export default function App() {
   const [toDoList, setToDoList] = useState<TodoItem[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState('');
 
   const handleTextPress = (index: number) => {
     setToDoList(
       toDoList.map((item, internalIndex) => {
+        const modificableItem = item;
         if (index === internalIndex) {
-          item.done = !item.done;
+          modificableItem.done = !item.done;
         }
-        return item;
-      })
+        return modificableItem;
+      }),
     );
   };
 
   const handleAddTodo = () => {
     setToDoList([...toDoList, { text: inputText, done: false }]);
-    setInputText("");
+    setInputText('');
     setIsModalVisible(false);
   };
 
@@ -64,11 +65,11 @@ export default function App() {
               </View>
             </Pressable>
           )}
-          ListEmptyComponent={
+          ListEmptyComponent={(
             <View style={styles.noDataView}>
               <Text>No data</Text>
             </View>
-          }
+          )}
         />
       </SafeAreaView>
       <Modal visible={isModalVisible} transparent animationType="slide">
@@ -100,21 +101,21 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     flex: 1,
-    borderColor: "black",
+    borderColor: 'black',
   },
   header: {
-    borderBottomColor: "gray",
+    borderBottomColor: 'gray',
     borderBottomWidth: 1,
     padding: 20,
     marginBottom: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   textHeader: {
     fontSize: 25,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   listItem: {
     padding: 10,
@@ -123,29 +124,29 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   listItemTextSelected: {
-    textDecorationLine: "line-through",
+    textDecorationLine: 'line-through',
   },
   modal: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   modalInput: {
     marginBottom: 30,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderWidth: 1,
     width: 250,
-    padding: 5
+    padding: 5,
   },
   modalContent: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
+    alignItems: 'center',
     elevation: 5,
   },
   modalFooter: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   modalFooterButton: {
     marginHorizontal: 10,

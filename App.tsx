@@ -31,7 +31,7 @@ export default function App() {
           modificableItem.done = !item.done;
         }
         return modificableItem;
-      }),
+      })
     );
   };
 
@@ -65,11 +65,11 @@ export default function App() {
               </View>
             </Pressable>
           )}
-          ListEmptyComponent={(
+          ListEmptyComponent={
             <View style={styles.noDataView}>
               <Text>No data</Text>
             </View>
-          )}
+          }
         />
       </SafeAreaView>
       <Modal visible={isModalVisible} transparent animationType="slide">

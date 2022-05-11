@@ -27,6 +27,7 @@
   "rules": {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
     "react/jsx-filename-extension": [
       "error",
       {
@@ -49,6 +50,12 @@
       {
         "ts": "never",
         "tsx": "never"
+      }
+    ],
+    "react/no-unstable-nested-components": [
+      "error",
+      {
+        "allowAsProps": true
       }
     ]
   }
